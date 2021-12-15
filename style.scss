@@ -1,0 +1,48 @@
+body {
+  padding: 12px;
+}
+
+.app {
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif;
+  font-size: 2rem;
+  font-weight: 500;
+  padding-bottom: 14px;
+}
+
+:root {
+  background: var(--background-color, #fff6dc);
+  color: var(--text-color, #281d00);
+  color-scheme: var(--color-scheme, light);
+}
+
+@mixin light-theme() {
+  --background-color: #fff6dc;
+  --text-color: #281d00;
+  --color-scheme: light;
+}
+
+@mixin dark-theme() {
+  --background-color: #281d00;
+  --text-color: #fff6dc;
+  --color-scheme: dark;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    @include light-theme();
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    @include dark-theme();
+  }
+}
+
+[forced-color-scheme='light'] {
+  @include light-theme();
+}
+
+[forced-color-scheme='dark'] {
+  @include dark-theme();
+}
